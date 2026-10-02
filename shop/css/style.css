@@ -171,7 +171,7 @@ button {
     display: flex;
 
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;
 
     margin-bottom: 25px;
 }
@@ -191,7 +191,7 @@ button {
 }
 
 
-/* блоки таваров */
+/* блоки товаров */
 
 .products {
     display: grid;
@@ -206,6 +206,9 @@ button {
 
 .product-card {
     padding: 16px;
+
+    display: flex;
+    flex-direction: column;
 
     background-color: #181818;
 
@@ -293,6 +296,10 @@ button {
 
 .product-info {
     padding-top: 17px;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .artist {
@@ -320,7 +327,8 @@ button {
     justify-content: space-between;
     align-items: center;
 
-    margin-top: 20px;
+    margin-top: auto;
+    padding-top: 20px;
 }
 
 .price {
@@ -392,4 +400,97 @@ button {
     font-size: 11px;
 
     letter-spacing: 2px;
+}
+
+/* адаптивка*/
+
+/* планшеты */
+
+@media (max-width: 900px) {
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 52px;
+        letter-spacing: -3px;
+    }
+
+    .navigation {
+        gap: 20px;
+    }
+}
+
+
+/* телефоны */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 90%;
+    }
+
+
+    /* шапка */
+
+    .header-content {
+        min-height: 65px;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .cart-button {
+        padding: 9px 13px;
+    }
+
+
+    /* главный текст */
+
+    .hero {
+        padding: 70px 0 65px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        line-height: 1;
+        letter-spacing: -2px;
+    }
+
+    .hero-text {
+        font-size: 15px;
+    }
+
+
+    /* каталог */
+
+    .catalog-title h2 {
+        font-size: 28px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* карточки */
+
+    .product-card {
+        padding: 14px;
+    }
+
+
+    /* низ */
+
+    .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
 }
