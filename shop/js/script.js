@@ -34,7 +34,20 @@ const products = Array.from(
 });
 
 
-let cart = [];
+// загружаем сохранённую корзину
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+
+// сохраняем корзину
+
+function saveCart() {
+    localStorage.setItem(
+        'cart',
+        JSON.stringify(cart)
+    );
+}
+
 
 addButtons.forEach(button => {
     button.addEventListener('click', () => {
@@ -67,6 +80,8 @@ function updateCart() {
     renderCart();
 
     updateTotalPrice();
+
+    saveCart();
 }
 
 
