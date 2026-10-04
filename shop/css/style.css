@@ -283,6 +283,165 @@ button {
     transform: scale(1.02);
 }
 
+/* товар внутри корзины */
+
+.cart-item {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 16px 0;
+
+    border-bottom: 1px solid #282828;
+}
+
+
+/* маленькая обложка */
+
+.cart-item-image {
+    width: 75px;
+    height: 75px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 6px;
+}
+
+
+/* инфа о товаре */
+
+.cart-item-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.cart-item-artist {
+    margin: 0 0 3px;
+
+    color: #b3b3b3;
+
+    font-size: 12px;
+}
+
+.cart-item-info h3 {
+    margin: 0 0 7px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.cart-item-price {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cart-item-bottom {
+    margin-top: 10px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* изменение количества */
+
+.quantity-controls {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.quantity-button {
+    width: 27px;
+    height: 27px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 0;
+
+    color: #ffffff;
+    background-color: #282828;
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.quantity-button:hover {
+    color: #000000;
+    background-color: #1ed760;
+}
+
+.quantity-controls span {
+    min-width: 15px;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* удалить товар */
+
+.remove-button {
+    padding: 0;
+
+    color: #727272;
+    background: transparent;
+
+    border: none;
+
+    font-size: 11px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.remove-button:hover {
+    color: #ffffff;
+}
+
+
+/* пустая корзина */
+
+.cart-empty {
+    margin: 45px 0;
+
+    color: #727272;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
 .hero {
     padding: 100px 0 90px;
 }
@@ -601,6 +760,25 @@ button {
 
     .cart-button {
         padding: 9px 13px;
+    }
+
+
+    /* корзина */
+
+    .cart-panel {
+        width: 100%;
+    }
+
+    .cart-header {
+        padding: 20px;
+    }
+
+    .cart-items {
+        padding: 16px 20px;
+    }
+
+    .cart-footer {
+        padding: 20px;
     }
 
 
