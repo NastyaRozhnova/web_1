@@ -714,6 +714,201 @@ button {
     letter-spacing: 2px;
 }
 
+/* форма заказа */
+
+.order-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 300;
+
+    background-color: rgba(0, 0, 0, 0.75);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: opacity 0.3s;
+}
+
+
+.order-overlay.active {
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+.order-modal {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    z-index: 301;
+
+    width: 460px;
+    max-width: 90%;
+
+    padding: 28px;
+
+    background-color: #181818;
+
+    border-radius: 14px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+    transform: translate(-50%, -45%) scale(0.95);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s;
+}
+
+
+.order-modal.active {
+    transform: translate(-50%, -50%) scale(1);
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+.order-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+
+.order-header h2 {
+    margin: 0;
+
+    font-size: 24px;
+}
+
+
+.order-close {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    color: #ffffff;
+    background-color: #282828;
+
+    border: none;
+    border-radius: 50%;
+
+    font-size: 23px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.order-close:hover {
+    background-color: #333333;
+}
+
+
+/* поля формы */
+
+.order-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.form-group label {
+    color: #b3b3b3;
+
+    font-size: 13px;
+}
+
+
+.form-group input {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    color: #ffffff;
+    background-color: #242424;
+
+    border: 1px solid #333333;
+    border-radius: 7px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+
+.form-group input::placeholder {
+    color: #727272;
+}
+
+
+.form-group input:focus {
+    border-color: #1ed760;
+}
+
+
+/* создать заказ */
+
+.create-order-button {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 15px;
+
+    color: #000000;
+    background-color: #1ed760;
+
+    border: none;
+    border-radius: 30px;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.create-order-button:hover {
+    background-color: #1fdf64;
+
+    transform: scale(1.02);
+}
+
 /* адаптивка*/
 
 /* планшеты */

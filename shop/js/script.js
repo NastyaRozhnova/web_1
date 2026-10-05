@@ -9,6 +9,13 @@ const cartClose = document.querySelector('.cart-close');
 const cartItems = document.querySelector('.cart-items');
 const cartTotalPrice = document.querySelector('.cart-total-price');
 
+const checkoutButton = document.querySelector('.checkout-button');
+
+const orderModal = document.querySelector('.order-modal');
+const orderOverlay = document.querySelector('.order-overlay');
+const orderClose = document.querySelector('.order-close');
+const orderForm = document.querySelector('.order-form');
+
 const products = Array.from(
     document.querySelectorAll('.product-card')
 ).map(card => {
@@ -284,3 +291,61 @@ cartClose.addEventListener('click', closeCart);
 
 cartOverlay.addEventListener('click', closeCart);
 updateCart();
+
+function openOrderForm() {
+
+    if (cart.length === 0) {
+
+        alert('Корзина пуста');
+
+        return;
+    }
+
+    orderModal.classList.add('active');
+
+    orderOverlay.classList.add('active');
+}
+
+function closeOrderForm() {
+
+    orderModal.classList.remove('active');
+
+    orderOverlay.classList.remove('active');
+}
+
+
+checkoutButton.addEventListener(
+    'click',
+    openOrderForm
+);
+
+orderClose.addEventListener(
+    'click',
+    closeOrderForm
+);
+
+orderOverlay.addEventListener(
+    'click',
+    closeOrderForm
+);
+
+
+// создание заказа
+
+orderForm.addEventListener('submit', event => {
+
+    event.preventDefault();
+
+
+    alert('Заказ создан!');
+
+    cart = [];
+
+    updateCart();
+
+    orderForm.reset();
+
+    closeOrderForm();
+
+    closeCart();
+});
