@@ -909,6 +909,47 @@ button {
     transform: scale(1.02);
 }
 
+/* уведомление */
+
+.notification {
+    position: fixed;
+
+    top: 95px;
+    right: 30px;
+
+    z-index: 400;
+
+    padding: 14px 20px;
+
+    color: #ffffff;
+    background-color: #242424;
+
+    border-left: 4px solid #1ed760;
+    border-radius: 7px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    opacity: 0;
+
+    transform: translateY(-15px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.3s,
+        transform 0.3s;
+}
+
+
+.notification.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
 /* адаптивка*/
 
 /* планшеты */

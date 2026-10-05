@@ -16,6 +16,10 @@ const orderOverlay = document.querySelector('.order-overlay');
 const orderClose = document.querySelector('.order-close');
 const orderForm = document.querySelector('.order-form');
 
+const notification = document.querySelector('.notification');
+
+let notificationTimer;
+
 const products = Array.from(
     document.querySelectorAll('.product-card')
 ).map(card => {
@@ -370,11 +374,30 @@ cartOverlay.addEventListener(
 
 updateCart();
 
+// уведомление
+
+function showNotification(message) {
+
+    notification.textContent = message;
+
+    notification.classList.add('show');
+
+
+    clearTimeout(notificationTimer);
+
+
+    notificationTimer = setTimeout(() => {
+
+        notification.classList.remove('show');
+
+    }, 2500);
+}
+
 function openOrderForm() {
 
     if (cart.length === 0) {
 
-        alert('Корзина пуста');
+        showNotification('Корзина пуста');
 
         return;
     }
@@ -415,7 +438,7 @@ orderForm.addEventListener('submit', event => {
     event.preventDefault();
 
 
-    alert('Заказ создан!');
+    showNotification('Заказ создан!');
 
     cart = [];
 
