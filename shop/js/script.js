@@ -109,15 +109,17 @@ function updateCartCount() {
 
 function renderCart() {
 
-    cartItems.innerHTML = '';
+    cartItems.replaceChildren();
 
     if (cart.length === 0) {
 
-        cartItems.innerHTML = `
-            <p class="cart-empty">
-                В корзине пока пусто 💿
-            </p>
-        `;
+        const emptyMessage = document.createElement('p');
+
+        emptyMessage.classList.add('cart-empty');
+
+        emptyMessage.textContent = 'В корзине пока пусто 💿';
+
+        cartItems.append(emptyMessage);
 
         return;
     }
@@ -135,68 +137,133 @@ function renderCart() {
         cartItem.classList.add('cart-item');
 
 
-        cartItem.innerHTML = `
-            <img
-                src="${product.image}"
-                alt="${product.title}"
-                class="cart-item-image"
-            >
+        // обложка
 
-            <div class="cart-item-info">
+        const image = document.createElement('img');
 
-                <p class="cart-item-artist">
-                    ${product.artist}
-                </p>
+        image.src = product.image;
 
-                <h3>
-                    ${product.title}
-                </h3>
+        image.alt = product.title;
 
-                <p class="cart-item-price">
-                    ${product.price.toLocaleString('ru-RU')} ₽
-                </p>
+        image.classList.add('cart-item-image');
 
 
-                <div class="cart-item-bottom">
+        // инфо
 
-                    <div class="quantity-controls">
+        const info = document.createElement('div');
 
-                        <button
-                            class="quantity-button"
-                            data-action="minus"
-                            data-id="${item.id}"
-                        >
-                            −
-                        </button>
-
-                        <span>${item.quantity}</span>
-
-                        <button
-                            class="quantity-button"
-                            data-action="plus"
-                            data-id="${item.id}"
-                        >
-                            +
-                        </button>
-
-                    </div>
+        info.classList.add('cart-item-info');
 
 
-                    <button
-                        class="remove-button"
-                        data-action="remove"
-                        data-id="${item.id}"
-                    >
-                        Удалить
-                    </button>
+        // исполнитель
 
-                </div>
+        const artist = document.createElement('p');
 
-            </div>
-        `;
+        artist.classList.add('cart-item-artist');
+
+        artist.textContent = product.artist;
 
 
-        cartItems.appendChild(cartItem);
+        // название альбома
+
+        const title = document.createElement('h3');
+
+        title.textContent = product.title;
+
+
+        // цена
+
+        const price = document.createElement('p');
+
+        price.classList.add('cart-item-price');
+
+        price.textContent =
+            `${product.price.toLocaleString('ru-RU')} ₽`;
+
+
+        // нижняя часть
+
+        const bottom = document.createElement('div');
+
+        bottom.classList.add('cart-item-bottom');
+
+
+        // кнопки количества
+
+        const quantityControls = document.createElement('div');
+
+        quantityControls.classList.add('quantity-controls');
+
+
+        // минус
+
+        const minusButton = document.createElement('button');
+
+        minusButton.classList.add('quantity-button');
+
+        minusButton.dataset.action = 'minus';
+
+        minusButton.dataset.id = item.id;
+
+        minusButton.textContent = '−';
+
+
+        // количество
+
+        const quantity = document.createElement('span');
+
+        quantity.textContent = item.quantity;
+
+
+        // плюс
+
+        const plusButton = document.createElement('button');
+
+        plusButton.classList.add('quantity-button');
+
+        plusButton.dataset.action = 'plus';
+
+        plusButton.dataset.id = item.id;
+
+        plusButton.textContent = '+';
+
+
+        // удалить
+
+        const removeButton = document.createElement('button');
+
+        removeButton.classList.add('remove-button');
+
+        removeButton.dataset.action = 'remove';
+
+        removeButton.dataset.id = item.id;
+
+        removeButton.textContent = 'Удалить';
+
+        quantityControls.append(
+            minusButton,
+            quantity,
+            plusButton
+        );
+
+        bottom.append(
+            quantityControls,
+            removeButton
+        );
+
+        info.append(
+            artist,
+            title,
+            price,
+            bottom
+        );
+
+        cartItem.append(
+            image,
+            info
+        );
+
+        cartItems.append(cartItem);
     });
 }
 
@@ -285,11 +352,22 @@ function closeCart() {
     cartOverlay.classList.remove('active');
 }
 
-cartButton.addEventListener('click', openCart);
 
-cartClose.addEventListener('click', closeCart);
+cartButton.addEventListener(
+    'click',
+    openCart
+);
 
-cartOverlay.addEventListener('click', closeCart);
+cartClose.addEventListener(
+    'click',
+    closeCart
+);
+
+cartOverlay.addEventListener(
+    'click',
+    closeCart
+);
+
 updateCart();
 
 function openOrderForm() {
